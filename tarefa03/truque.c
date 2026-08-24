@@ -9,7 +9,7 @@ int criar_r(int *r, int *v, int size, int n) {
   // cria o vetor r a partir do vetor v
   int m = 0;
   for (int i = 0; i < size - 1; i++) {
-    for (int j = 0; j < size; j++) {
+    for (int j = 0; j < size && m + j < n; j++) {
       r[i] += v[m + j];
     }
     m += size;
@@ -25,11 +25,11 @@ int soma(int *v, int *r, int arg1, int arg2, int size) {
   int resultado = 0;
 
   int i = arg1;
-  for (; (i % size != 0) && i < arg2; i++) {
+  for (; (i % size != 0) && i <= arg2; i++) {
     resultado += v[i];
   }
 
-  if (i % 5 == 0) {
+  if (i % size == 0) {
     i = i / size;
   } else {
     i = i / size;
