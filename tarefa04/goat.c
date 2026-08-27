@@ -55,25 +55,26 @@ void printar_sufixo(char consoante, int n_letras) {
 int main(void) {
 
   // le a entrada
-  char frase[200001];
+  char frase[400000];
   int ascii;
   int ascii_temp;
-  int somatorio;
-  int somatorio_temp;
+  long long somatorio;
+  long long somatorio_temp;
   int escrevendo_palavra;
   int n_letras;
-  int primeira_palavra;
   char consoante;
-  
+  // variavel de debugar
+  // int p = 0;
+
   while (fgets(frase, sizeof(frase), stdin) != NULL) {
 
-    //fgets(frase, sizeof(frase), stdin);
+    // trecho para debugar
+    // if (p == 6) {return 0;}
 
     somatorio = 0;
     somatorio_temp = 0;
     escrevendo_palavra = 0;
     n_letras = 0;
-    primeira_palavra = 1;
     consoante = '*';
 
     // passa pela string retirando simbolos e numeros, enquanto soma os numeros
@@ -108,7 +109,7 @@ int main(void) {
     if (somatorio == 1) {
       printf("1 goat says:");
     } else {
-      printf("%d goats say:", somatorio);
+      printf("%lld goats say:", somatorio);
     }
 
     // passa pela string aplicando as regras 1, 2 e 3 enquanto printa
@@ -129,19 +130,14 @@ int main(void) {
           printar_sufixo(consoante, n_letras);
           n_letras = 0;
           consoante = '*';
-          printf(" ");
           escrevendo_palavra = 0;
           continue;
         }
         continue;
       }
 
-      if (primeira_palavra) {
-        printf(" ");
-        primeira_palavra = 0;
-      }
-
       if (!escrevendo_palavra) {
+        printf(" ");
         n_letras = 0;
         if (!is_vogal(frase[i])) {
           consoante = frase[i];
@@ -157,6 +153,8 @@ int main(void) {
     }
 
     printf("\n");
+
+    // p ++; para debugar
   }
 
   return 0;
