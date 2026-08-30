@@ -4,9 +4,23 @@
 typedef struct {
   char nome[51];
   char endereco[101];
-  long long numero;
-  int aniversario[3];
+  char numero[16];
+  char dia[3];
+  char mes[3];
+  char ano[5];
 } contato;
+
+int printar_array(char *array) {
+  for (int i = 0;; i++) {
+    printf("%c", array[i]);
+    if (array[i] == '\0') {
+      break;
+    }
+  }
+  printf("|\n");
+
+  return 0;
+}
 
 int achar_espaco_vazio(contato contatos[]) {
   // acha a posição do primeiro contato sem ninguem
@@ -27,9 +41,8 @@ void inserir(contato contatos[]) {
   contatos[i].nome[strcspn(contatos[i].nome, "\n")] = '\0';
   fgets(contatos[i].endereco, 101, stdin);
   contatos[i].endereco[strcspn(contatos[i].endereco, "\n")] = '\0';
-  scanf(" %lld", &contatos[i].numero);
-  scanf(" %d/%d/%d", &contatos[i].aniversario[0], &contatos[i].aniversario[1],
-        &contatos[i].aniversario[2]);
+  scanf(" %s", contatos[i].numero);
+  scanf(" %[^/]/%[^/]/%s", contatos[i].dia, contatos[i].mes, contatos[i].ano);
 
   printf("Contato para %s inserido.\n\n", contatos[i].nome);
 }
@@ -94,10 +107,9 @@ void buscar(contato contatos[]) {
   for (int i = 0; i < 1000; i++) {
     achou = strstr(contatos[i].nome, contato_busca);
     if (achou != NULL) {
-      printf("(%d) %s\t%s\t%lld\t%d/%d/%d\n", contagem, contatos[i].nome,
-             contatos[i].endereco, contatos[i].numero,
-             contatos[i].aniversario[0], contatos[i].aniversario[1],
-             contatos[i].aniversario[2]);
+      printf("(%d) %s\t%s\t%s\t%s/%s/%s\n", contagem, contatos[i].nome,
+             contatos[i].endereco, contatos[i].numero, contatos[i].dia,
+             contatos[i].mes, contatos[i].ano);
       impresso = 1;
     }
     if (contatos[i].nome[0] != '\0')
@@ -120,15 +132,15 @@ void imprimir(contato contatos[]) {
   for (int i = 0; i < 1000; i++) {
     if (contatos[i].nome[0] != '\0') {
       printado = 1;
-      printf("(%d) %s\t%s\t%lld\t%d/%d/%d\n", contagem, contatos[i].nome,
-             contatos[i].endereco, contatos[i].numero,
-             contatos[i].aniversario[0], contatos[i].aniversario[1],
-             contatos[i].aniversario[2]);
+      printf("(%d) %s\t%s\t%s\t%s/%s/%s\n", contagem, contatos[i].nome,
+             contatos[i].endereco, contatos[i].numero, contatos[i].dia,
+             contatos[i].mes, contatos[i].ano);
       contagem++;
     }
   }
 
-  if (!printado) printf("Nenhum contato.\n");
+  if (!printado)
+    printf("Nenhum contato.\n");
 
   printf("\n");
 }
