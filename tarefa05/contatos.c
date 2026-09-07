@@ -37,10 +37,12 @@ void inserir(contato contatos[]) {
 
   scanf(" ");
 
-  fgets(contatos[i].nome, 51, stdin);
-  contatos[i].nome[strcspn(contatos[i].nome, "\n")] = '\0';
-  fgets(contatos[i].endereco, 101, stdin);
-  contatos[i].endereco[strcspn(contatos[i].endereco, "\n")] = '\0';
+  scanf(" %[^\n]", contatos[i].nome);
+  //fgets(contatos[i].nome, 51, stdin);
+  //contatos[i].nome[strcspn(contatos[i].nome, "\n")] = '\0';
+  scanf(" %[^\n]", contatos[i].endereco);
+  //fgets(contatos[i].endereco, 101, stdin);
+  //contatos[i].endereco[strcspn(contatos[i].endereco, "\n")] = '\0';
   scanf(" %s", contatos[i].numero);
   scanf(" %[^/]/%[^/]/%s", contatos[i].dia, contatos[i].mes, contatos[i].ano);
 
@@ -107,7 +109,7 @@ void buscar(contato contatos[]) {
   for (int i = 0; i < 1000; i++) {
     achou = strstr(contatos[i].nome, contato_busca);
     if (achou != NULL) {
-      printf("(%d) %s\t%s\t%s\t%s/%s/%s\n", contagem, contatos[i].nome,
+      printf("(%d) %s\t%s\t%s\t%s/%s/%s\n\n", contagem, contatos[i].nome,
              contatos[i].endereco, contatos[i].numero, contatos[i].dia,
              contatos[i].mes, contatos[i].ano);
       impresso = 1;
@@ -117,9 +119,9 @@ void buscar(contato contatos[]) {
   }
 
   if (!impresso)
-    printf("Nenhum contato.\n");
+    printf("Nenhum contato.\n\n");
 
-  printf("\n");
+  //printf("\n");
 }
 
 void imprimir(contato contatos[]) {
