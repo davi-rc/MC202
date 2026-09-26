@@ -6,7 +6,6 @@ struct elemento{
     struct elemento* prox;
 };typedef struct elemento elemento;
 
-void criar(elemento** pp_elemento);
 void apagar_lista(elemento** pp_elemento);
 int is_in(int valor, elemento* p_elemento);
 void inserir_antes(int valor, elemento** pp_elemento);

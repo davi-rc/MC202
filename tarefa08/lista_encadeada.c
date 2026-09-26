@@ -1,13 +1,6 @@
 #include "lista_encadeada.h"
 #include <stdlib.h>
 
-
-void criar(elemento** pp_elemento) {
-    if (*pp_elemento != NULL) {
-        apagar_lista(pp_elemento);
-    }
-}
-
 //apaga um lista encadeada inteira e troca o valor do apontador inicial para NULL
 void apagar_lista(elemento** pp_elemento) {
     elemento* apontador = *pp_elemento; elemento* apontador_prox;

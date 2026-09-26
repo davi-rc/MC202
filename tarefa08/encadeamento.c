@@ -218,7 +218,7 @@ int main() {
 
         if (comando == 'c') {
             scanf(" %d", &param);
-            criar(&p_elemento[param]);
+            apagar_lista(&p_elemento[param]);
         }
         else if (comando == 'i') {
             scanf(" %d", &param);
