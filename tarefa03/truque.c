@@ -9,7 +9,7 @@ int criar_r(int *r, int *v, int size, int n) {
   // cria o vetor r a partir do vetor v
   int m = 0;
   for (int i = 0; i < size - 1; i++) {
-    for (int j = 0; j < size && m + j < n; j++) {
+    for (int j = 0; j < size && m + j < n; j++) { 
       r[i] += v[m + j];
     }
     m += size;
