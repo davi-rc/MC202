@@ -15,11 +15,12 @@
     }vetor_no;
 
     void inserir(no** p_raiz, char palavra[], int freq);
-    void remover(no** p_raiz, char palavra[]);
     no* procurar(no* raiz, char palavra[]);
     no* procurar_prefixo(no* raiz, char prefixo[], int size_n);
     void percorrer_prefixo(no* raiz, vetor_no* vetor, char prefixo[], int size_n);
+    void excluir(no** raiz, char palavra[]);
     void percorrer_crescente(no* raiz);
+    void apagar_arvore(no* raiz);
 
     vetor_no* criar_vetor_no(int cap);
     void push_vetor_no(vetor_no* V, no* pno);
